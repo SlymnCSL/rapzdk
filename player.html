@@ -1,25 +1,85 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
   <meta charset="UTF-8" />
-  <title>Video.js Player</title>
-  <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+  <title>Video Player</title>
+  <link href="https://vjs.zencdn.net/8.9.0/video-js.css" rel="stylesheet" />
+  <style>
+    /* Player boyutu */
+    .video-js {
+      width: 660px;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Kontrol barı */
+    .vjs-control-bar {
+      background-color: #1e1e1e !important;
+    }
+
+    /* Oynatma çizgisi */
+    .vjs-play-progress {
+      background-color: #ff4500 !important; /* Senin turuncumsu renk örneği */
+    }
+
+    /* Slider arkası */
+    .vjs-slider {
+      background-color: #444 !important;
+    }
+
+    /* Ses ve timeline çubuğu */
+    .vjs-volume-level,
+    .vjs-play-progress,
+    .vjs-slider-bar {
+      background-color: #ff4500 !important;
+    }
+
+    /* Büyük oynat tuşu */
+    .vjs-big-play-button {
+      background-color: #ff4500 !important;
+      border: none !important;
+      border-radius: 50% !important;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      font-size: 2em;
+    }
+
+    .vjs-big-play-button:hover {
+      background-color: #e63e00 !important;
+    }
+  </style>
 </head>
 <body>
 
   <video
     id="my-video"
-    class="video-js vjs-default-skin"
+    class="video-js"
     controls
     preload="auto"
-    width="640"
-    height="360"
+    poster="kapak.jpg"
     data-setup="{}"
   >
-    <source src="123123.mp4" type="video/mp4" />
-    Tarayıcınız video etiketini desteklemiyor.
+    <source src="123123.m4v" type="video/mp4" />
+    <!-- Alternatif format varsa eklenebilir -->
+    <p class="vjs-no-js">
+      Bu video tarayıcınızda oynatılamıyor.
+    </p>
   </video>
 
-  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+  <script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
+  <script>
+    // JS ile oyuncuyu başlatma (özelleştirme eklemek gerekirse buraya yazılabilir)
+    var player = videojs('my-video');
+
+    // Örnek: otomatik oynatma + ses düzeyi
+    player.ready(function () {
+      player.volume(0.8);  // sesi %80 olarak başlat
+      // player.play();     // otomatik oynatma isterse bu satırı aktif et
+    });
+  </script>
+
 </body>
 </html>

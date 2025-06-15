@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>VideoJS Özel Player</title>
-
-  <!-- Video.js Temel CSS -->
+  <meta charset="UTF-8" />
+  <title>Video Player</title>
   <link href="https://vjs.zencdn.net/8.9.0/video-js.css" rel="stylesheet" />
-
-  <!-- Kalite Seçici -->
-  <script src="https://cdn.jsdelivr.net/npm/videojs-http-source-selector@1.1.5/dist/videojs-http-source-selector.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/videojs-http-source-selector@1.1.5/dist/videojs-http-source-selector.css" rel="stylesheet" />
-
   <style>
     .video-js {
       width: 660px;
@@ -34,7 +27,6 @@
       background-color: #444 !important;
     }
 
-    /* ✅ Tam yuvarlak büyük oynat butonu */
     .vjs-big-play-button {
       background-color: #ff4500 !important;
       border: none !important;
@@ -43,23 +35,10 @@
       height: 80px;
       line-height: 80px;
       font-size: 2em;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
     }
 
     .vjs-big-play-button:hover {
       background-color: #e63e00 !important;
-    }
-
-    /* ✅ Durdurulduğunda ortada buton görünsün */
-    .vjs-paused .vjs-big-play-button {
-      display: block !important;
-    }
-
-    /* ✅ Oynatılırken ortadaki butonu gizle */
-    .vjs-playing .vjs-big-play-button {
-      display: none !important;
     }
   </style>
 </head>
@@ -67,34 +46,21 @@
 
   <video
     id="my-video"
-    class="video-js vjs-default-skin"
+    class="video-js"
     controls
     preload="auto"
-    poster="kapak.jpg"
-    crossorigin="anonymous"
+    poster=""
+    data-setup="{}"
   >
-    <!-- Video kaynakları (çoklu kalite) -->
-    <source src="video-1080.mp4" type="video/mp4" label="1080p" res="1080">
-    <source src="video-720.mp4" type="video/mp4" label="720p" res="720">
-    <source src="video-480.mp4" type="video/mp4" label="480p" res="480">
-    <source src="video-360.mp4" type="video/mp4" label="360p" res="360">
-
-    <!-- Altyazılar -->
-    <track kind="subtitles" src="turkce.vtt" srclang="tr" label="Türkçe" default>
-    <track kind="subtitles" src="english.vtt" srclang="en" label="English">
+    <source src="123123.mp4" type="video/mp4" />
+    <p class="vjs-no-js">
+      Tarayıcınız bu videoyu oynatmayı desteklemiyor.
+    </p>
   </video>
 
-  <!-- Video.js Script -->
   <script src="https://vjs.zencdn.net/8.9.0/video.min.js"></script>
-
   <script>
     var player = videojs('my-video');
-
-    // Kalite seçici başlat
-    player.httpSourceSelector({
-      default: 'auto'
-    });
-
     player.ready(function () {
       player.volume(0.8);
     });

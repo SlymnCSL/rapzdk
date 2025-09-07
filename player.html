@@ -81,7 +81,7 @@
   if (document.referrer.indexOf("guncelfilmizle.com") === -1) {
     document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>İzinsiz erişim!</h2>";
   } else {
-    // Player sadece izin verilen siteden çağrıldığında çalışır
+    //
     var player = videojs('my-video');
     player.ready(function () {
       player.volume(0.8);
@@ -91,5 +91,6 @@
 
 </body>
 </html>
+
 
 
